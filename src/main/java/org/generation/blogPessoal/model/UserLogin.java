@@ -9,7 +9,13 @@ public class UserLogin {
 	private String senha;
 	
 	private String token;
-
+	
+	private String foto;
+	
+	private String tipos;
+	
+	
+	
 	public String getNome() {
 		return nome;
 	}
@@ -53,4 +59,21 @@ public class UserLogin {
 	public void setTipo(Object tipo) {
 	
 	}
+
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
+
+	public String getTipos() {
+		return tipos;
+	}
+
+	public void setTipos(String tipos) {
+		this.tipos = tipos;
+	}
+	
 }

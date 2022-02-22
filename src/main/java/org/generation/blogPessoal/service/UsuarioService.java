@@ -17,7 +17,7 @@ public class UsuarioService {
 	@Autowired
 	private UsuarioRepository usuarioRepository;
 
-	public Optional<Object> cadastrarUsuario(Usuario usuario) {
+	public Optional<Usuario> cadastrarUsuario(Usuario usuario) {
 
 		if (usuarioRepository.findByUsuario(usuario.getUsuario()).isPresent())
 			return Optional.empty();
@@ -59,8 +59,9 @@ public class UsuarioService {
 				usuarioLogin.get().setId(usuario.get().getId());
 				usuarioLogin.get().setNome(usuario.get().getNome());
 				usuarioLogin.get().setFoto(usuario.get().getFoto());
-				usuarioLogin.get().setTipo(usuario.get().getTipo());
+				usuarioLogin.get().setTipo(usuario.get().getTipos());
 
+				
 				return usuarioLogin;
 
 			}

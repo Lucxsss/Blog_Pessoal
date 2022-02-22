@@ -1,15 +1,19 @@
 package org.generation.blogPessoal.model;
 
-import java.util.Optional;
+import java.util.List;
 
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "tb_usuario")
@@ -33,7 +37,17 @@ public class Usuario {
 	@Size(min = 5, max = 110)
 	private String senha;
 
-
+	
+	private String foto;
+	
+	
+	private String tipos;
+	
+	
+	@OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE)
+	@JsonIgnoreProperties("usuario")
+	private List<Postagem>postagem;
+	
 	public long getId() {
 		return id;
 	}
@@ -74,20 +88,37 @@ public class Usuario {
 	}
 
 
-	public Object getFoto() {
-		// TODO Auto-generated method stub
-		return null;
+
+
+	public String getFoto() {
+		return foto;
 	}
 
 
-	public Object getTipo() {
-		// TODO Auto-generated method stub
-		return null;
+	public void setFoto(String foto) {
+		this.foto = foto;
 	}
 
 
-	public Optional<UserLogin> cadastrarUsuario(@Valid Usuario usuario2) {
-		// TODO Auto-generated method stub
-		return null;
+	public String getTipos() {
+		return tipos;
 	}
+
+
+	public void setTipos(String tipos) {
+		this.tipos = tipos;
+	}
+
+
+	public List<Postagem> getPostagem() {
+		return postagem;
+	}
+
+
+	public void setPostagem(List<Postagem> postagem) {
+		this.postagem = postagem;
+	}
+
+
+
 }
