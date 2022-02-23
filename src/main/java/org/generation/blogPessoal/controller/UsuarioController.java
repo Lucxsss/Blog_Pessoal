@@ -50,7 +50,6 @@ public class UsuarioController  {
 	
 	@PostMapping("/logar")
 	public ResponseEntity<UserLogin> login(@RequestBody Optional<UserLogin> user) {
-		usuarioService = null;
 		return usuarioService.autenticarUsuario(user)
 			.map(resposta -> ResponseEntity.ok(resposta))
 			.orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
